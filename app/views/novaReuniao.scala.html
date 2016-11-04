@@ -1,0 +1,30 @@
+@* novaReuniao Template File *@
+@(reuniaoForm: Form[Reuniao])
+@import helper._
+@import b3.vertical.fieldConstructor
+
+@main("Nova Reunião"){
+		<div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="/">Home</a></li>
+            </ul>
+        </div>
+		@b3.form(routes.ReuniaoCRUD.gravar()){
+		<fieldset>
+			<legend>Nova Reunião</legend>
+		</fieldset>
+				@b3.text(reuniaoForm("tema"), '_label -> "Tema", '_help ->"Coloque aqui o tema da reunião")
+				@b3.text(reuniaoForm("local"), '_label -> "Local")
+				@b3.text(reuniaoForm("dataReuniao"), '_label -> "Data da Reunião")
+				@b3.textarea(reuniaoForm("encaminhamentos"), '_label -> "Encaminhamentos")
+				@b3.textarea(reuniaoForm("participantes"), '_label -> "Participantes", '_help -> "Separe os participantes por vírgula")
+		
+		<div class="control-group">
+         <label class="control-label" for="singlebutton"></label>
+         <div class="actions">
+       	   <button id="singilebutton" name="singlegutton" class="btn btn-primary">Gravar</button>
+       	   <a href="@routes.ReuniaoCRUD.lista()" class="btn">Canelar</a>
+          </div>
+       </div>
+	}	
+}
